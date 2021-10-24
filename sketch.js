@@ -6,6 +6,7 @@ const Bodies=Matter.Bodies;
 var bg,bgImg;
 var player, shooterImg, shooter_shooting;
 var alex,world,engine;
+var monstor;
 
 function preload(){
   
@@ -28,6 +29,7 @@ function setup() {
 bg.addImage(bgImg)
 bg.scale = 1.1
   alex = new Alex (100,100);
+ // monstor = new Monstor(200,200);
   
 
 //creating the player sprite
@@ -38,15 +40,30 @@ function draw() {
     Engine.update(engine); 
     
     alex.display();
+    //if(frameCount%100 === 0){
+     // console.log("hi");
+      //var y = Math.round(random(50,height-50));
+      monstor = new Monstor(100,250);
+     monstor.display();
+    //  console.log(y);
+    //}
+    //monstor.display();
 
 
   //moving the player up and down and making the game mobile compatible using touches
 if(keyDown("UP_ARROW")||touches.length>0){
- // player.y = player.y-30
+  alex.moveUp();
 }
 if(keyDown("DOWN_ARROW")||touches.length>0){
- //player.y = player.y+30
+  alex.moveDown();
 }
+if(keyDown("RIGHT_ARROW")||touches.length>0){
+   alex.moveRight();
+ }
+ if(keyDown("LEFT_ARROW")||touches.length>0){
+   alex.moveLeft();
+ }
+  
 
 
 //release bullets and change the image of shooter to shooting position when space is pressed
@@ -60,7 +77,18 @@ if(keyWentDown("space")){
 else if(keyWentUp("space")){
   player.addImage(shooterImg)
 }
-
+console.log();
+//createMonstor();
 //drawSprites();
 
+}
+
+function createMonstor(){
+  if(frameCount%100 === 0){
+    console.log("hi");
+    var y = Math.round(random(50,height-50));
+    monstor = new Monstor(100,y);
+    monstor.display();
+    console.log(y);
+  }
 }

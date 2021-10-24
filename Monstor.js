@@ -13,9 +13,13 @@ class Monstor {
         var pos=this.body.position;
         push();
         translate (pos.x,pos.y);
-        rotate(this.body.angle)
+        rotate(this.body.angle);
+        imageMode(CENTER);
         image(this.image,pos.x,pos.y,50,50);
         pop();
+    }
+    velocity(vx,vy){
+    Matter.Body.setVelocity(this.body,{x:vx,y:vy})
     }
 
 }

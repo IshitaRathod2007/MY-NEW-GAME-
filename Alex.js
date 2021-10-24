@@ -13,9 +13,26 @@ class Alex {
         var pos=this.body.position;
         push();
         translate (pos.x,pos.y);
-        rotate(this.body.angle)
+        rotate(this.body.angle);
+        imageMode(CENTER);
         image(this.image,pos.x,pos.y,50,50);
         pop();
+    }
+    moveUp(){
+        var pos=this.body.position;
+        pos.y = pos.y-7;
+    }
+    moveDown(){
+        var pos=this.body.position;
+        pos.y = pos.y+7;
+    }
+    moveRight(){
+        var pos=this.body.position;
+        pos.x = pos.x+7;
+    }
+    moveLeft(){
+        var pos=this.body.position;
+        pos.x = pos.x-7;
     }
 
 }
