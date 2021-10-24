@@ -5,7 +5,7 @@ const Bodies=Matter.Bodies;
 
 var bg,bgImg;
 var player, shooterImg, shooter_shooting;
-
+var alex,world,engine;
 
 function preload(){
   
@@ -20,11 +20,14 @@ function setup() {
 
   
   createCanvas(windowWidth,windowHeight);
+  engine = Engine.create();
+  world = engine.world 
 
   //adding the background image
   bg = createSprite(displayWidth/2-20,displayHeight/2-40,20,20)
 bg.addImage(bgImg)
 bg.scale = 1.1
+  alex = new Alex (100,100);
   
 
 //creating the player sprite
@@ -32,8 +35,9 @@ bg.scale = 1.1
 
 function draw() {
   background(0); 
-
-
+    Engine.update(engine); 
+    
+    alex.display();
 
 
   //moving the player up and down and making the game mobile compatible using touches
@@ -57,6 +61,6 @@ else if(keyWentUp("space")){
   player.addImage(shooterImg)
 }
 
-drawSprites();
+//drawSprites();
 
 }
